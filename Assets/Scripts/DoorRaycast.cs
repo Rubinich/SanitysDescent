@@ -34,7 +34,6 @@ public class DoorRaycast : MonoBehaviour
                 {
                     raycastedObj.PlayAnimation();
                 }
-
             }
         }
         else
