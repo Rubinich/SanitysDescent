@@ -11,10 +11,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Interact
+  - Door
   - Water
   - UI
-  - 
+  - Phone
   - 
   - Character
   - Ground
