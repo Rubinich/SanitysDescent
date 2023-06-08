@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,16 +20,43 @@ public class Raycast : MonoBehaviour
         RaycastHit hit;
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         int mask = 1 << LayerMask.NameToLayer(excludeLayerName) | layerMaskInteract.value;
-        if(Physics.Raycast(transform.position, fwd, out hit ,rayLenght, mask))
+        if (Physics.Raycast(transform.position, fwd, out hit, rayLenght, mask))
         {
             if (hit.collider.CompareTag(interactableTag))
             {
-                HandleInteraction(hit.collider);
+                if (!doOnce)
+                {
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Door"))
+                    {
+                        raycastedObj1 = hit.collider.gameObject.GetComponent<DoorController>();
+                        CrosshairChange(true);
+                    }
+                    else if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Phone"))
+                    {
+                        raycastedObj2 = hit.collider.gameObject.GetComponent<PhoneController>();
+                        CrosshairChange(true);
+                    }
+                        
+                }
+                isCrosshairActive = true;
+                doOnce = true;
+                if (Input.GetKeyDown(interact))
+                {
+                    raycastedObj1.PlayAnimation();
+                }
+            }
+            else
+            {
+                if (isCrosshairActive)
+                {
+                    CrosshairChange(false);
+                    doOnce = false;
+                }
             }
         }
         else
         {
-            if(isCrosshairActive)
+            if (isCrosshairActive)
             {
                 CrosshairChange(false);
                 doOnce = false;
@@ -35,41 +64,6 @@ public class Raycast : MonoBehaviour
         }
 
     }
-    void HandleInteraction(Collider collider)
-    {
-        if (!doOnce)
-        {
-            if (collider.gameObject.layer == LayerMask.NameToLayer("Door"))
-            {
-                raycastedObj1 = collider.gameObject.GetComponent<DoorController>();
-            }
-            else if (collider.gameObject.layer == LayerMask.NameToLayer("Phone"))
-            {
-                raycastedObj2 = collider.gameObject.GetComponent<PhoneController>();
-            }
-            else if (collider.gameObject.layer == LayerMask.NameToLayer("Flashlight"))
-            {
-                //raycastedObj3 = collider.gameObject.GetComponent<FlashlightController>();
-            }
-            // Add additional else-if conditions for other layers and their corresponding components
-
-            if (raycastedObj1 != null)
-            {
-                CrosshairChange(true);
-            }
-        }
-        isCrosshairActive = true;
-        doOnce = true;
-
-        if (Input.GetKeyDown(interact))
-        {
-            if (raycastedObj1 != null)
-            {
-                raycastedObj1.PlayAnimation();
-            }
-        }
-    }
-
     void CrosshairChange(bool active)
     {
         if (active && !doOnce)
@@ -82,6 +76,4 @@ public class Raycast : MonoBehaviour
             isCrosshairActive = false;
         }
     }
-    
-
 }
