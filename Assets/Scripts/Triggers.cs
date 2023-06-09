@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTriggerEvent : MonoBehaviour
+public class Triggers : MonoBehaviour
 {
     public PhoneController phoneController;
 

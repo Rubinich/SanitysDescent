@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class PhoneController : MonoBehaviour
 {
-    public AudioClip musicClip;
-    private AudioSource audioSource;
+    //za zvonjavu telefona
+    public AudioClip ringClip;
+    private AudioSource ringSource;
+    //za poziv
+    public AudioClip callClip;
+    private AudioSource callSource;
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = musicClip;
+        ringSource = GetComponent<AudioSource>();
+        ringSource.clip = ringClip;
+        callSource = GetComponent<AudioSource>();
+        callSource.clip = callClip;
     }
     public void PlayMusic()
     {
-        audioSource.Play();
+        ringSource.Play();
     }
 }
