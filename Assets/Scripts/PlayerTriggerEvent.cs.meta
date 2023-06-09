@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: ff712065af0ee8546b310a1ab60ce8fd
+guid: d18cbff2df0403d4b83475f951831ff4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - doorOpenClip: {instanceID: 0}
-  - doorCloseClip: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

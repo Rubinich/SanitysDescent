@@ -24,14 +24,22 @@ public class DoorController : MonoBehaviour
         {
             anim.Play("DoorOpen", 0, 0.0f);
             doorOpen = true;
-            DoorOpenSound();
+            if(!doorOpenSound.isPlaying)
+            {
+                DoorOpenSound();
+            }
+            
             
         }
         else
         {
             anim.Play("DoorClose", 0, 0.0f);
             doorOpen = false;
-            DoorCloseSound();
+            if (!doorCloseSound.isPlaying)
+            {
+                DoorCloseSound();
+            }
+            
   
         }
     }

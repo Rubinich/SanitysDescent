@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class PhoneController : MonoBehaviour
 {
-    public AudioClip musicClip; // The audio clip to play
-    public AudioSource phoneAudioSource; // The audio source component attached to the phone
+    public AudioClip musicClip;
+    private AudioSource audioSource;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-            // Check if the phone audio source and music clip are assigned
-            if (phoneAudioSource != null && musicClip != null)
-            {
-                // Play the music clip on the phone audio source
-                phoneAudioSource.clip = musicClip;
-                phoneAudioSource.Play();
-            }
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = musicClip;
+    }
+    public void PlayMusic()
+    {
+        audioSource.Play();
     }
 }
