@@ -11,7 +11,7 @@ public class Phone_Pick_Up : MonoBehaviour
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
