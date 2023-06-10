@@ -37,7 +37,7 @@ public class DoorController : MonoBehaviour
             }
             isDoorAnimationPlaying = true;
 
-            // za odgaðanje postavljanja isDoorAnimationPlaying na false za vrijeme trajanja animacije
+            // za odgaï¿½anje postavljanja isDoorAnimationPlaying na false za vrijeme trajanja animacije
             float animationDuration = anim.GetCurrentAnimatorStateInfo(0).length;
             StartCoroutine(SetIsDoorAnimationPlayingFalse(animationDuration));
         }
@@ -61,7 +61,6 @@ public class DoorController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         isDoorAnimationPlaying = false;
     }
-
     public bool IsDoorAnimationPlaying()
     {
         return isDoorAnimationPlaying;
