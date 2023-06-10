@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class PhoneController : MonoBehaviour
 {
-    //za zvonjavu telefona
+    // Ringing audio
     public AudioClip ringClip;
     private AudioSource ringSource;
-    //za poziv
+    private bool isRinging;
+
+    // Call audio
     public AudioClip callClip;
     private AudioSource callSource;
 
@@ -13,25 +15,32 @@ public class PhoneController : MonoBehaviour
     {
         ringSource = gameObject.AddComponent<AudioSource>();
         ringSource.clip = ringClip;
+        ringSource.loop = true;
 
         callSource = gameObject.AddComponent<AudioSource>();
         callSource.clip = callClip;
     }
+
     public void PlayRingAudio()
     {
         if (!callSource.isPlaying)
         {
-            ringSource.Play();
+            if (!isRinging)
+            {
+                ringSource.Play();
+                isRinging = true;
+            }
         }
     }
 
     public void PlayCallAudio()
     {
-        if(!callSource.isPlaying)
+        if (!callSource.isPlaying)
         {
             ringSource.Stop();
-            callSource.Play();    
+            isRinging = false;
+            callSource.Play();
+            
         }
-        
     }
 }
