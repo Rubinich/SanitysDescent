@@ -5,19 +5,14 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
     private Animator anim;
-    public AudioClip doorOpenClip;
-    public AudioClip doorCloseClip;
-    private AudioSource doorOpenSound;
-    private AudioSource doorCloseSound;
+    public AudioSource doorOpenSound;
+    public AudioSource doorCloseSound;
     private bool doorOpen;
     private bool isDoorAnimationPlaying;
     private void Start()
     {
         anim = GetComponent<Animator>();
-        doorOpenSound = gameObject.AddComponent<AudioSource>();
-        doorOpenSound.clip = doorOpenClip;
-        doorCloseSound = gameObject.AddComponent<AudioSource>();
-        doorCloseSound.clip = doorCloseClip;
+
     }
     public void PlayAnimation()
     {
@@ -37,24 +32,24 @@ public class DoorController : MonoBehaviour
             }
             isDoorAnimationPlaying = true;
 
-            // za odgaðanje postavljanja isDoorAnimationPlaying na false za vrijeme trajanja animacije
+            // za odgadanje postavljanja isDoorAnimationPlaying na false za vrijeme trajanja animacije
             float animationDuration = anim.GetCurrentAnimatorStateInfo(0).length;
             StartCoroutine(SetIsDoorAnimationPlayingFalse(animationDuration));
         }
     }
     public void DoorOpenSound()
     {
-        if(!doorOpenSound.isPlaying)
+        if (doorOpenSound != null && !doorOpenSound.isPlaying)
         {
             doorOpenSound.Play();
         }
     }
     public void DoorCloseSound()
     {
-        if(!doorCloseSound.isPlaying)
+        if (doorCloseSound != null && !doorCloseSound.isPlaying)
         {
             doorCloseSound.Play();
-        } 
+        }
     }
     private IEnumerator SetIsDoorAnimationPlayingFalse(float delay)
     {
