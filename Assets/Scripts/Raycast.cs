@@ -13,36 +13,57 @@ public class Raycast : MonoBehaviour
     [SerializeField] private KeyCode interact = KeyCode.Mouse0;
     [SerializeField] private Image crosshair = null;
     private bool isCrosshairActive;
-    private bool doOnce;
+    private bool doOnceDoor;
+    private bool doOncePhone;
     private const string interactableTag = "InteractiveObject";
+
     private void Update()
     {
         RaycastHit hit;
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         int mask = 1 << LayerMask.NameToLayer(excludeLayerName) | layerMaskInteract.value;
+
         if (Physics.Raycast(transform.position, fwd, out hit, rayLenght, mask))
         {
             if (hit.collider.CompareTag(interactableTag))
             {
-                if (!doOnce)
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Door"))
                 {
-                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Door"))
+                    if (!doOnceDoor)
                     {
                         raycastedObj1 = hit.collider.gameObject.GetComponent<DoorController>();
                         CrosshairChange(true);
+                        isCrosshairActive = true;
+                        doOnceDoor = true;
+                        doOncePhone = false; // za reset doOncePhone
                     }
-                    else if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Phone"))
+                }
+                else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Phone"))
+                {
+                    if (!doOncePhone)
                     {
                         raycastedObj2 = hit.collider.gameObject.GetComponent<PhoneController>();
                         CrosshairChange(true);
+                        isCrosshairActive = true;
+                        doOncePhone = true;
+                        doOnceDoor = false; // za reset doOnceDoor
                     }
-                        
                 }
-                isCrosshairActive = true;
-                doOnce = true;
+
                 if (Input.GetKeyDown(interact))
                 {
-                    raycastedObj1.PlayAnimation();
+                    // ili imamo interakciju s vratima ili s telefonom
+                    if (doOnceDoor && !raycastedObj1.IsDoorAnimationPlaying())
+                    {
+                        //Debug.Log("doOnceDoor: " + doOnceDoor);
+                        raycastedObj1.PlayAnimation();
+                        //Debug.Log("doOnceDoor: " + doOnceDoor);
+                    }
+                    else if (doOncePhone)
+                    {
+                        raycastedObj2.PlayCallAudio();
+                        //Debug.Log("doOncePhone: " + doOncePhone);
+                    }
                 }
             }
             else
@@ -50,7 +71,8 @@ public class Raycast : MonoBehaviour
                 if (isCrosshairActive)
                 {
                     CrosshairChange(false);
-                    doOnce = false;
+                    doOnceDoor = false;
+                    doOncePhone = false;
                 }
             }
         }
@@ -59,14 +81,15 @@ public class Raycast : MonoBehaviour
             if (isCrosshairActive)
             {
                 CrosshairChange(false);
-                doOnce = false;
+                doOnceDoor = false;
+                doOncePhone = false;
             }
         }
-
     }
+
     void CrosshairChange(bool active)
     {
-        if (active && !doOnce)
+        if ((active && !doOnceDoor) || (active && !doOncePhone))
         {
             crosshair.color = Color.red;
         }

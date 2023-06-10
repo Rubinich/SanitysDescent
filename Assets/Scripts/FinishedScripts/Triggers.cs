@@ -10,7 +10,7 @@ public class Triggers : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            phoneController.PlayMusic();
+            phoneController.PlayRingAudio();
         }
     }
 }
