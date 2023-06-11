@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Triggers : MonoBehaviour
+public class PhoneTrigger : MonoBehaviour
 {
     public PhoneController phoneController;
     private void OnTriggerEnter(Collider other)
