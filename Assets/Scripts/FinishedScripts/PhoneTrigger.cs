@@ -5,11 +5,14 @@ using UnityEngine;
 public class PhoneTrigger : MonoBehaviour
 {
     public PhoneController phoneController;
+    private bool hasTriggered = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasTriggered)
         {
             phoneController.PlayRingAudio();
+            hasTriggered = true;
         }
     }
 }
