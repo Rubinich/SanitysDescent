@@ -3235,7 +3235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 179298, guid: 2fa97d29375bda64080d41087c0c107c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 186052, guid: 2fa97d29375bda64080d41087c0c107c, type: 3}
       propertyPath: m_Name
@@ -3336,7 +3336,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524961232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec99029de97075d4996f0464024cdb40, type: 3}
   m_Name: 
@@ -3356,7 +3356,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524961232}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ec7e4784a85463d46a43001f298032af, type: 3}
@@ -4736,7 +4736,6 @@ GameObject:
   - component: {fileID: 1960672139}
   - component: {fileID: 1960672138}
   - component: {fileID: 1960672137}
-  - component: {fileID: 1960672136}
   m_Layer: 0
   m_Name: EventTrigger
   m_TagString: Untagged
@@ -4744,19 +4743,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1960672136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960672135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d18cbff2df0403d4b83475f951831ff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phoneController: {fileID: 382229367}
 --- !u!65 &1960672137
 BoxCollider:
   m_ObjectHideFlags: 0
