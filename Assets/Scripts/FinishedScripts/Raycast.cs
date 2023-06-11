@@ -16,23 +16,8 @@ public class Raycast : MonoBehaviour
     private bool doOnceDoor;
     private bool doOncePhone;
     private const string interactableTag = "InteractiveObject";
-
-    private bool hasStartedGame = false; // New variable to track if the game has started
-
-    private void Start()
-    {
-    }
-
     private void Update()
     {
-        if (!hasStartedGame)
-        {
-            if (Input.GetKeyDown(interact))
-            {
-                hasStartedGame = true; // Update the flag to indicate that the game has started
-            }
-            return;
-        }
         RaycastHit hit;
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         int mask = 1 << LayerMask.NameToLayer(excludeLayerName) | layerMaskInteract.value;
@@ -49,7 +34,7 @@ public class Raycast : MonoBehaviour
                         CrosshairChange(true);
                         isCrosshairActive = true;
                         doOnceDoor = true;
-                        doOncePhone = false; // Reset doOncePhone
+                        doOncePhone = false;
                     }
                 }
                 else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Phone"))
@@ -60,13 +45,12 @@ public class Raycast : MonoBehaviour
                         CrosshairChange(true);
                         isCrosshairActive = true;
                         doOncePhone = true;
-                        doOnceDoor = false; // Reset doOnceDoor
+                        doOnceDoor = false;
                     }
                 }
 
                 if (Input.GetKeyDown(interact))
                 {
-                    // Either interact with a door or a phone
                     if (doOnceDoor && !raycastedObj1.IsDoorAnimationPlaying())
                     {
                         raycastedObj1.PlayAnimation();
