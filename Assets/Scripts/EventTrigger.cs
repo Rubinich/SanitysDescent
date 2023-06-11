@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class EventTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public FlickeringLights myLight;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.CompareTag("Player"))
+        {
+            myLight.LightFlickering();
+        }
     }
 }

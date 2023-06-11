@@ -3346,8 +3346,8 @@ MonoBehaviour:
   lightModelRenderer: {fileID: 1524961235}
   lightOnMaterial: {fileID: 2100000, guid: 0529c95baad5a264787a242f949623c9, type: 2}
   lightOffMaterial: {fileID: 2100000, guid: e9d184983ca6ff14dbe8e77ce01ce445, type: 2}
-  minTime: 0.5
-  maxTime: 1.5
+  minTime: 2
+  maxTime: 3
   timer: 0
 --- !u!82 &1524961234
 AudioSource:
@@ -3359,7 +3359,7 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ec7e4784a85463d46a43001f298032af, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 13d4d9fc15547c04595835faeac2b557, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4776,7 +4776,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9e5cd447705e37544a567dafb77fb884, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
