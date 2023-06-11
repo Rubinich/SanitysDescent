@@ -14,6 +14,9 @@ public class FlickeringLights : MonoBehaviour
     public float maxTime;
     public float timer;
 
+    private bool isFlickering;
+    private float flickeringDuration;
+
     void Start()
     {
         timer = Random.Range(minTime, maxTime);
@@ -21,7 +24,15 @@ public class FlickeringLights : MonoBehaviour
 
     void Update()
     {
-        LightFlickering();
+        if (isFlickering)
+            LightFlickering();
+    }
+
+    public void StartFlickering(float duration)
+    {
+        isFlickering = true;
+        flickeringDuration = duration;
+        timer = Random.Range(minTime, maxTime);
     }
 
     public void LightFlickering()
@@ -46,6 +57,16 @@ public class FlickeringLights : MonoBehaviour
             }
 
             timer = Random.Range(minTime, maxTime);
+            flickeringDuration -= timer;
+
+            if (flickeringDuration <= 0f)
+            {
+                isFlickering = false;
+                flickeringDuration = 0f;
+                lightIn.enabled = false;
+                lightModelRenderer.material = lightOffMaterial;
+                lightSound.Stop();
+            }
         }
     }
 }
