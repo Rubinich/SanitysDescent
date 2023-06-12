@@ -17,12 +17,17 @@ public class FlickeringLights : MonoBehaviour
     private bool isFlickering;
     private float flickeringDuration;
 
-    void Start()
+    private void Start()
     {
         timer = Random.Range(minTime, maxTime);
+
+        // Preload the materials
+        lightOnMaterial = Instantiate(lightOnMaterial);
+        lightOffMaterial = Instantiate(lightOffMaterial);
+        lightModelRenderer.material = lightOffMaterial;
     }
 
-    void Update()
+    private void Update()
     {
         if (isFlickering)
             LightFlickering();
@@ -35,7 +40,7 @@ public class FlickeringLights : MonoBehaviour
         timer = Random.Range(minTime, maxTime);
     }
 
-    public void LightFlickering()
+    private void LightFlickering()
     {
         if (timer > 0)
             timer -= Time.deltaTime;
