@@ -20110,7 +20110,7 @@ MonoBehaviour:
   notificationMessage: OPEN THE DOOR
   removeAfterExit: 1
   disableAfterTimer: 1
-  disableTimer: 3
+  disableTimer: 2
   notificationAnim: {fileID: 461255619}
 --- !u!65 &1383535636
 BoxCollider:
@@ -23643,7 +23643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662071961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1463.65, y: 31.88, z: 418.16}
+  m_LocalPosition: {x: -1463.65, y: 31.88, z: 412.84}
   m_LocalScale: {x: 6.4334, y: 7.168, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
