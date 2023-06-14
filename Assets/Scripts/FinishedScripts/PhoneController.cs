@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PhoneController : MonoBehaviour
@@ -9,7 +10,6 @@ public class PhoneController : MonoBehaviour
     public bool hasPlayedRing;
     public float delayAction;
     public bool canSkipCall;
-
 
     public void PlayRingAudio()
     {
@@ -31,15 +31,22 @@ public class PhoneController : MonoBehaviour
             ringSource.Stop();
             isRinging = false;
             callSource.Play();
-            hasPlayedCall = true; 
+            hasPlayedCall = true;
+
+            StartCoroutine(DelayedAction());
         }
     }
-    private System.Collections.IEnumerator DelayedAction()
+
+    private IEnumerator DelayedAction()
     {
         yield return new WaitForSeconds(delayAction);
+
         // Code to execute after the delay
-        // For example, you can resume the ringing sound
-        //isRinging = true;
-        //ringSource.Play();
+        // For example, start the flickering lights
+        EventTrigger eventTrigger = FindObjectOfType<EventTrigger>();
+        if (eventTrigger != null)
+        {
+            eventTrigger.StartFlickeringLights();
+        }
     }
 }

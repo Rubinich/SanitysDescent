@@ -7,7 +7,6 @@ public class PhoneTrigger : MonoBehaviour
     public PhoneController phoneController;
     public GameObject toEnable;
     private bool hasTriggered = false;
-    public float delay;
 
     private void Start()
     {

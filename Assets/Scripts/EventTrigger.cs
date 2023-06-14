@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EventTrigger : MonoBehaviour
@@ -11,12 +12,23 @@ public class EventTrigger : MonoBehaviour
     {
         if (!hasTriggered && other.CompareTag("Player"))
         {
-            foreach (FlickeringLights light in flickeringLights)
-            {
-                light.StartFlickering(durationDB2);
-            }
-
+            StartFlickeringLights();
             hasTriggered = true;
         }
+    }
+
+    public void StartFlickeringLights()
+    {
+        StartCoroutine(FlickerLightsCoroutine());
+    }
+
+    private IEnumerator FlickerLightsCoroutine()
+    {
+        foreach (FlickeringLights light in flickeringLights)
+        {
+            light.StartFlickering(durationDB2);
+        }
+
+        yield return null;
     }
 }

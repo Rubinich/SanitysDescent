@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 407714}
   - component: {fileID: 10822452}
   - component: {fileID: 5897122412219688084}
+  - component: {fileID: 7307920752387130891}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -115,6 +116,26 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &7307920752387130891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec99029de97075d4996f0464024cdb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightIn: {fileID: 10822452}
+  lightSound: {fileID: 1137187257754140747}
+  lightModelRenderer: {fileID: 2309692}
+  lightOnMaterial: {fileID: 2100000, guid: 530cad4a028973847b949a88f26cdfd9, type: 2}
+  lightOffMaterial: {fileID: 2100000, guid: e9d184983ca6ff14dbe8e77ce01ce445, type: 2}
+  minTime: 0.1
+  maxTime: 0.5
+  timer: 0
 --- !u!1 &179298
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +147,6 @@ GameObject:
   - component: {fileID: 428016}
   - component: {fileID: 3348786}
   - component: {fileID: 2309692}
-  - component: {fileID: 3844461592454297160}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -179,7 +199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0529c95baad5a264787a242f949623c9, type: 2}
+  - {fileID: 2100000, guid: 530cad4a028973847b949a88f26cdfd9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,26 +221,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3844461592454297160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec99029de97075d4996f0464024cdb40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightIn: {fileID: 10822452}
-  lightSound: {fileID: 1137187257754140747}
-  lightModelRenderer: {fileID: 2309692}
-  lightOnMaterial: {fileID: 2100000, guid: 0529c95baad5a264787a242f949623c9, type: 2}
-  lightOffMaterial: {fileID: 2100000, guid: dce40486551b32c42b157edebba3bb39, type: 2}
-  minTime: 0.1
-  maxTime: 0.5
-  timer: 0
 --- !u!1 &61944695378226128
 GameObject:
   m_ObjectHideFlags: 0

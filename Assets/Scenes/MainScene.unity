@@ -2684,6 +2684,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &188343603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7307920752387130891, guid: 2fa97d29375bda64080d41087c0c107c,
+    type: 3}
+  m_PrefabInstance: {fileID: 188343593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188343595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec99029de97075d4996f0464024cdb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &198025848
 GameObject:
   m_ObjectHideFlags: 0
@@ -10677,7 +10689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663532053}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.96, y: 8.87, z: -32.47}
+  m_LocalPosition: {x: -17.961, y: 8.76, z: -32.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15220,13 +15232,25 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1091981874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7307920752387130891, guid: 2fa97d29375bda64080d41087c0c107c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1091981865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091981867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec99029de97075d4996f0464024cdb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1092282752
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29194
+  m_Name: pb_Mesh502016
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15556,6 +15580,7 @@ GameObject:
   - component: {fileID: 1110956973}
   - component: {fileID: 1110956972}
   - component: {fileID: 1110956971}
+  - component: {fileID: 1110956976}
   m_Layer: 0
   m_Name: PhoneTrigger
   m_TagString: Untagged
@@ -15577,7 +15602,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phoneController: {fileID: 1249484289}
   toEnable: {fileID: 789740292}
-  delay: 0
 --- !u!65 &1110956972
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15656,6 +15680,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1110956976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110956970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea2c4d314866a404fad904f507eb83de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationDB2: 20
+  flickeringLights:
+  - {fileID: 1741008671}
+  - {fileID: 1712185743}
+  - {fileID: 188343603}
+  - {fileID: 1556261448}
+  - {fileID: 1091981874}
 --- !u!1001 &1115716656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17574,8 +17617,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringSource: {fileID: 1566151264}
+  isRinging: 0
   callSource: {fileID: 2091751908}
-  delayAction: 2
+  hasPlayedCall: 0
+  hasPlayedRing: 0
+  delayAction: 5
+  canSkipCall: 0
 --- !u!65 &1249484290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20912,6 +20959,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1556261448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7307920752387130891, guid: 2fa97d29375bda64080d41087c0c107c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556261438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556261440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec99029de97075d4996f0464024cdb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1562823833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21919,8 +21978,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.60304254
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.429
+      value: 0.968
       objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016655, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
@@ -23602,6 +23666,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1712185743 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7307920752387130891, guid: 2fa97d29375bda64080d41087c0c107c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1712185733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712185735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec99029de97075d4996f0464024cdb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1722184736
 GameObject:
   m_ObjectHideFlags: 0
@@ -23699,7 +23775,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3844461592454297160, guid: 2fa97d29375bda64080d41087c0c107c,
+        type: 3}
+      propertyPath: lightOffMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e9d184983ca6ff14dbe8e77ce01ce445, type: 2}
+    m_RemovedComponents:
+    - {fileID: 3844461592454297160, guid: 2fa97d29375bda64080d41087c0c107c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2fa97d29375bda64080d41087c0c107c, type: 3}
 --- !u!4 &1741008661 stripped
 Transform:
@@ -23795,6 +23877,38 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1741008670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741008662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec99029de97075d4996f0464024cdb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightIn: {fileID: 1741008666}
+  lightSound: {fileID: 0}
+  lightModelRenderer: {fileID: 0}
+  lightOnMaterial: {fileID: 0}
+  lightOffMaterial: {fileID: 0}
+  minTime: 0
+  maxTime: 0
+  timer: 0
+--- !u!114 &1741008671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7307920752387130891, guid: 2fa97d29375bda64080d41087c0c107c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1741008660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741008662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec99029de97075d4996f0464024cdb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1743012912
 GameObject:
   m_ObjectHideFlags: 0
