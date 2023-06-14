@@ -15,7 +15,14 @@ public class Raycast : MonoBehaviour
     private bool isCrosshairActive;
     private bool doOnceDoor;
     private bool doOncePhone;
+    private bool canInteractWithPhone; // Added variable to track phone interaction
     private const string interactableTag = "InteractiveObject";
+
+    private void Start()
+    {
+        canInteractWithPhone = true; // Enable initial interaction with the phone
+    }
+
     private void Update()
     {
         RaycastHit hit;
@@ -39,13 +46,16 @@ public class Raycast : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Phone"))
                 {
-                    if (!doOncePhone)
+                    if (!doOncePhone && canInteractWithPhone) // Added check for interaction with the phone
                     {
                         raycastedObj2 = hit.collider.gameObject.GetComponent<PhoneController>();
                         CrosshairChange(true);
                         isCrosshairActive = true;
                         doOncePhone = true;
                         doOnceDoor = false;
+
+                        // Enable ability to skip call audio
+                        raycastedObj2.canSkipCall = true;
                     }
                 }
 
@@ -55,10 +65,23 @@ public class Raycast : MonoBehaviour
                     {
                         raycastedObj1.PlayAnimation();
                     }
-                    else if (doOncePhone)
+                    else if (doOncePhone && !raycastedObj2.callSource.isPlaying)
                     {
                         raycastedObj2.PlayCallAudio();
                     }
+                }
+
+                // Check if the call audio can be skipped and the "E" key is pressed
+                if (doOncePhone && raycastedObj2.canSkipCall && Input.GetKeyDown(KeyCode.E))
+                {
+                    raycastedObj2.callSource.Stop();
+                    raycastedObj2.isRinging = false;
+                    raycastedObj2.hasPlayedCall = false;
+                    raycastedObj2.canSkipCall = false;
+
+                    // Disable interaction with the phone
+                    canInteractWithPhone = false;
+                    doOncePhone = false;
                 }
             }
             else
@@ -81,6 +104,7 @@ public class Raycast : MonoBehaviour
             }
         }
     }
+
     void CrosshairChange(bool active)
     {
         if ((active && !doOnceDoor) || (active && !doOncePhone))
