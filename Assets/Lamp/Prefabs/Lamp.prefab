@@ -103,7 +103,7 @@ MonoBehaviour:
   lightModelRenderer: {fileID: 2309692}
   lightOnMaterial: {fileID: 2100000, guid: 530cad4a028973847b949a88f26cdfd9, type: 2}
   lightOffMaterial: {fileID: 2100000, guid: e9d184983ca6ff14dbe8e77ce01ce445, type: 2}
-  minTime: 0.1
+  minTime: 0.2
   maxTime: 0.5
   timer: 0
 --- !u!1 &77141502423457886
