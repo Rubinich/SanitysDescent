@@ -15,12 +15,12 @@ public class Raycast : MonoBehaviour
     private bool isCrosshairActive;
     private bool doOnceDoor;
     private bool doOncePhone;
-    private bool canInteractWithPhone; // Added variable to track phone interaction
+    public bool canInteractWithPhone;
     private const string interactableTag = "InteractiveObject";
 
     private void Start()
     {
-        canInteractWithPhone = true; // Enable initial interaction with the phone
+        canInteractWithPhone = true;
     }
 
     private void Update()
@@ -46,15 +46,13 @@ public class Raycast : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Phone"))
                 {
-                    if (!doOncePhone && canInteractWithPhone) // Added check for interaction with the phone
+                    if (!doOncePhone && canInteractWithPhone)
                     {
                         raycastedObj2 = hit.collider.gameObject.GetComponent<PhoneController>();
                         CrosshairChange(true);
                         isCrosshairActive = true;
                         doOncePhone = true;
                         doOnceDoor = false;
-
-                        // Enable ability to skip call audio
                         raycastedObj2.canSkipCall = true;
                     }
                 }
@@ -70,16 +68,12 @@ public class Raycast : MonoBehaviour
                         raycastedObj2.PlayCallAudio();
                     }
                 }
-
-                // Check if the call audio can be skipped and the "E" key is pressed
                 if (doOncePhone && raycastedObj2.canSkipCall && Input.GetKeyDown(KeyCode.E))
                 {
                     raycastedObj2.callSource.Stop();
                     raycastedObj2.isRinging = false;
                     raycastedObj2.hasPlayedCall = false;
                     raycastedObj2.canSkipCall = false;
-
-                    // Disable interaction with the phone
                     canInteractWithPhone = false;
                     doOncePhone = false;
                 }
