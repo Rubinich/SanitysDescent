@@ -8,18 +8,10 @@ public class EventTrigger : MonoBehaviour
 
     private bool hasTriggered = false;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!hasTriggered && other.CompareTag("Player"))
-        {
-            StartFlickeringLights();
-            hasTriggered = true;
-        }
-    }
-
     public void StartFlickeringLights()
     {
         StartCoroutine(FlickerLightsCoroutine());
+        hasTriggered = true;
     }
 
     private IEnumerator FlickerLightsCoroutine()
@@ -28,7 +20,6 @@ public class EventTrigger : MonoBehaviour
         {
             light.StartFlickering(durationDB2);
         }
-
         yield return null;
     }
 }

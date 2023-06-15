@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PhoneController : MonoBehaviour
@@ -10,6 +11,7 @@ public class PhoneController : MonoBehaviour
     public bool hasPlayedRing;
     public float delayAction;
     public bool canSkipCall;
+    private bool hasFinishedCallAudio = false;
 
     public static event Action OnCallAudioStartEvent;
     public static event Action OnCallAudioStopEvent;
@@ -39,12 +41,29 @@ public class PhoneController : MonoBehaviour
             OnCallAudioStartEvent?.Invoke();
 
             StartCoroutine(DelayedAction());
+            StartCoroutine(WaitForCallAudioCompletion());
         }
     }
 
-    private System.Collections.IEnumerator DelayedAction()
+    private IEnumerator WaitForCallAudioCompletion()
+    {
+        while (callSource.isPlaying)
+        {
+            yield return null;
+        }
+
+        hasFinishedCallAudio = true;
+    }
+
+
+    private IEnumerator DelayedAction()
     {
         yield return new WaitForSeconds(delayAction);
+
+        while (!hasFinishedCallAudio || ringSource.isPlaying)
+        {
+            yield return null;
+        }
 
         EventTrigger eventTrigger = FindObjectOfType<EventTrigger>();
         if (eventTrigger != null)
@@ -54,4 +73,5 @@ public class PhoneController : MonoBehaviour
 
         OnCallAudioStopEvent?.Invoke();
     }
+
 }
